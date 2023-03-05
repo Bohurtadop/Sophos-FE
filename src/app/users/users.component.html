@@ -1,0 +1,55 @@
+<div class="container text-center mb-5">
+  <h1 class="mb-5">List of users</h1>
+  <div class="row row-cols-1 row-cols-md-3 row-cols-sm-1 g-4">
+    <div *ngFor="let user of users; index as index" class="col">
+      <form id="{{ index }}">
+        <div class="card rounded-4" data-bs-theme="dark">
+          <div class="card-body">
+            <div class="mb-3">
+              <label for="nameInput" class="form-label text-light">Name</label>
+              <input
+                type="text"
+                class="form-control border-light bg-dark text-light"
+                id="nameInput{{ index }}"
+                value="{{ user.name }}"
+                disabled
+              />
+            </div>
+            <div class="mb-3">
+              <label for="emailInput" class="form-label text-light"
+                >Email</label
+              >
+              <input
+                type="email"
+                class="form-control border-light bg-dark text-light"
+                id="emailInput{{ index }}"
+                value="{{ user.email }}"
+                disabled
+              />
+            </div>
+            <div class="mb-4">
+              <label for="passwordInput" class="form-label text-light"
+                >Password</label
+              >
+              <input
+                type="password"
+                class="form-control border-light bg-dark text-light"
+                id="passwordInput{{ index }}"
+                value="{{ user.password }}"
+                disabled
+              />
+            </div>
+          </div>
+          <div class="btn-group align-self-center mb-3">
+            <button type="button" class="btn btn-outline-light">
+              <span class="material-symbols-outlined pt-1"> edit </span>
+            </button>
+            <button type="button" class="btn btn-outline-light">
+              <span class="material-symbols-outlined pt-1"> delete </span>
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
