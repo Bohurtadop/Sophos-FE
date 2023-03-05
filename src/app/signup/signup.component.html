@@ -1,0 +1,74 @@
+<form
+  class="container needs-validation col-md-6 text-center mb-5"
+  data-bs-theme="dark"
+  novalidate
+  [formGroup]="checkoutForm"
+>
+  <div class="container p-3 border rounded-4" *ngIf="!success">
+    <h3 class="text-dark mb-3">Please sign up</h3>
+    <div data-bs-theme="dark" class="form-floating mb-3">
+      <input
+        type="text"
+        class="form-control"
+        id="name"
+        placeholder="name"
+        formControlName="name"
+        required
+      />
+      <label for="name">Name</label>
+    </div>
+    <div data-bs-theme="dark" class="form-floating mb-3">
+      <input
+        type="email"
+        class="form-control"
+        id="email"
+        placeholder="name@example.com"
+        formControlName="email"
+        required
+      />
+      <label for="email">Email address</label>
+    </div>
+    <div data-bs-theme="dark" class="form-floating">
+      <input
+        type="password"
+        class="form-control"
+        id="password"
+        placeholder="Password"
+        formControlName="password"
+        required
+      />
+      <label for="password" class="form-label">Password</label>
+    </div>
+    <button class="btn btn-dark mt-3" type="submit">Register</button>
+  </div>
+  <div class="card text-bg-success" *ngIf="success">
+    <div class="card-header">Done!</div>
+    <div class="card-body justify-content-center row">
+      <div class="col-4">
+        <img
+          src="https://icons-for-free.com/iconfiles/png/512/complete+done+green+success+valid+icon-1320183462969251652.png"
+          class="card-img-top"
+          alt="success icon"
+        />
+      </div>
+      <h5 class="card-title">Successful registration</h5>
+      <p class="card-text">Now you're registered</p>
+      <div class="btn-group col-md-10 col-lg-8">
+        <button
+          (click)="newRegistration()"
+          type="button"
+          class="btn btn-outline-light"
+        >
+          New registration
+        </button>
+        <button
+          [routerLink]="['/users']"
+          type="button"
+          class="btn btn-outline-light"
+        >
+          Go to users
+        </button>
+      </div>
+    </div>
+  </div>
+</form>
