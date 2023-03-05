@@ -1,1 +1,28 @@
-<p>pagenotfound works!</p>
+<div class="container text-center mb-5">
+  <div
+    class="col-lg-6 col-sm-10 col-md-8 border border-danger rounded-4 m-auto py-5 px-2"
+  >
+    <img
+      src="https://cdn-icons-png.flaticon.com/512/5219/5219070.png"
+      alt=""
+      class="w-50"
+    />
+    <h2 class="m-3">Page not found</h2>
+    <div class="btn-group col-md-10 col-lg-8">
+      <button
+        [routerLink]="['/signup']"
+        type="button"
+        class="btn btn-outline-danger"
+      >
+        Go to sign up
+      </button>
+      <button
+        [routerLink]="['/users']"
+        type="button"
+        class="btn btn-outline-danger"
+      >
+        Go to users
+      </button>
+    </div>
+  </div>
+</div>
