@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { Observable } from 'rxjs';
 import { CustomerService } from '../customer.service';
 import { Customer } from '../customer';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-users',
@@ -12,10 +12,15 @@ export class UsersComponent {
   constructor(private customerService: CustomerService) {}
 
   users!: Customer[];
+  userIdToDelete!: number;
+
+  public getUsers() {
+    this.customerService.getCustomers().subscribe((data) => {
+      this.users = data;
+    });
+  }
 
   ngOnInit() {
-    this.customerService
-      .getCustomers()
-      .subscribe((data) => (this.users = data));
+    this.getUsers();
   }
 }

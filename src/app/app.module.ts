@@ -10,6 +10,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { Constants } from './config/constants';
+import { UserCardComponent } from './user-card/user-card.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { Constants } from './config/constants';
     SignupComponent,
     UsersComponent,
     PageNotFoundComponent,
+    UserCardComponent,
   ],
   imports: [
     BrowserModule,

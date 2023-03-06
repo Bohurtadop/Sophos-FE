@@ -21,4 +21,14 @@ export class CustomerService {
   saveCustomer(customerData: Customer): Observable<Customer> {
     return this.http.post<Customer>(this.customerUrl, customerData);
   }
+
+  updateCustomer(customerData: Customer): Observable<Customer> {
+    return this.http.put<Customer>(this.customerUrl, customerData);
+  }
+
+  deleteCustomer(customerId: number): Observable<Boolean> {
+    return this.http.delete<Boolean>(
+      this.customerUrl.concat('/', customerId.toString())
+    );
+  }
 }

@@ -1,18 +1,28 @@
 <div class="container text-center mb-5">
   <h1 class="mb-5">List of users</h1>
+  <!-- Iterable with the list of users -->
   <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-sm-1 g-4">
-    <div *ngFor="let user of users; index as index" class="col">
+    <app-user-card
+      *ngFor="let user of users; index as index"
+      [user]="user"
+      [index]="index"
+      (updateUsers)="getUsers()"
+    ></app-user-card>
+    <!-- <div *ngFor="let user of users; index as index" class="col">
       <form id="{{ index }}">
         <div class="card rounded-4" data-bs-theme="dark">
-          <div class="card-body">
+          <div class="card-body" [formGroup]="userForm">
             <div class="mb-3">
               <label for="nameInput" class="form-label text-light">Name</label>
               <input
                 type="text"
-                class="form-control border-light bg-dark text-light"
+                class="form-control border-light bg-dark {{
+                  userEditables[user.id!] ? 'text-light' : 'text-muted'
+                }}"
                 id="nameInput{{ index }}"
                 value="{{ user.name }}"
-                disabled
+                formControlName="name"
+                [disabled]="!userEditables[user.id!]"
               />
             </div>
             <div class="mb-3">
@@ -21,10 +31,13 @@
               >
               <input
                 type="email"
-                class="form-control border-light bg-dark text-light"
+                class="form-control border-light bg-dark {{
+                  userEditables[user.id!] ? 'text-light' : 'text-muted'
+                }}"
                 id="emailInput{{ index }}"
                 value="{{ user.email }}"
-                disabled
+                formControlName="email"
+                [disabled]="!userEditables[user.id!]"
               />
             </div>
             <div class="mb-4">
@@ -33,23 +46,38 @@
               >
               <input
                 type="password"
-                class="form-control border-light bg-dark text-light"
+                class="form-control border-light bg-dark {{
+                  userEditables[user.id!] ? 'text-light' : 'text-muted'
+                }}"
                 id="passwordInput{{ index }}"
                 value="{{ user.password }}"
-                disabled
+                formControlName="password"
+                [disabled]="!userEditables[user.id!]"
               />
             </div>
           </div>
           <div class="btn-group align-self-center mb-3">
-            <button type="button" class="btn btn-outline-light">
-              <span class="material-symbols-outlined pt-1"> edit </span>
+            <button
+              type="button"
+              class="btn btn-outline-light"
+              (click)="editAndSaveUser(user)"
+            >
+              <span class="material-symbols-outlined pt-1">
+                {{ userEditables[user.id!] ? "save" : "edit" }}
+              </span>
             </button>
-            <button type="button" class="btn btn-outline-light">
+            <button
+              type="button"
+              class="btn btn-outline-light"
+              data-bs-toggle="modal"
+              data-bs-target="#staticBackdrop"
+              (click)="setUserIdToDelete(user.id!)"
+            >
               <span class="material-symbols-outlined pt-1"> delete </span>
             </button>
           </div>
         </div>
       </form>
-    </div>
+    </div> -->
   </div>
 </div>
